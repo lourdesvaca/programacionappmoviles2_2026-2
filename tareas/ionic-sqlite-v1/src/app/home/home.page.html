@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-input [formControl] = "nombreInput" placeholder="Nombre de la persona"></ion-input>
+    <ion-button slot="end" (click)="agregar()">Añadir</ion-button>
+  </ion-item>
+  
+  <ion-list>
+    @for (persona of this.personas(); track persona.id){
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>{{persona.nombre}}</ion-label>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option>
+            <ion-button (click)="editar(persona)">Editar</ion-button>
+          </ion-item-option>
+          <ion-item-option color="danger">
+            <ion-button (click)="eliminar(id: persona.id ?? null)">Eliminar</ion-button>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+
+    }
+
+  </ion-list>
+  
+</ion-content>
